@@ -223,6 +223,10 @@ endif()
 
 add_library(nanodbc nanodbc/nanodbc.cpp nanodbc/nanodbc.h)
 
+if(MSVC)
+		target_compile_options(nanodbc PUBLIC /MT)
+endif()
+
 target_link_libraries(nanodbc ${Boost_LIBRARIES} ${ODBC_LIBRARIES})
 
 target_include_directories(nanodbc PUBLIC
